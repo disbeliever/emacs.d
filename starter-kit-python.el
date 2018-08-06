@@ -53,6 +53,7 @@
   (compile (concat "python " (buffer-name))))
 
 (defun my-python-hook ()
+  (turn-on-paredit)
   (local-set-key (kbd "C-c C-c") 'python-compile)
   (local-set-key [f8] 'pep8))
 (add-hook 'python-mode-hook 'my-python-hook)
@@ -60,11 +61,12 @@
 ;;; Auto completion
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
+(setq jedi:environment-root "jedi-python3")
 
 ;;; pylookup
 (add-to-list 'load-path "~/.emacs.d/custom-packages/pylookup/")
 (eval-when-compile (require 'pylookup))
-(setq pylookup-program "~/bin/pylookup.py")
+(setq pylookup-program "~/.emacs.d/custom-packages/pylookup/pylookup.py")
 (setq pylookup-db-file "~/.cache/pylookup.db")
 (global-set-key [(control shift menu)] 'pylookup-lookup)
 
