@@ -1,6 +1,7 @@
 ;; org-mode
 ;(add-to-list 'org-modules 'org-habits)
 (require 'org)
+(require 'dbus)
 (setq org-clock-mode-line-total 'current)
 (setq org-clock-into-drawer nil)
 (setq org-default-priority 68)
@@ -148,5 +149,41 @@
                       active-days
                       sum-hours
                       (/ sum-hours active-days 8)))))
+
+(defun awesome-eval-lua-code (lua-code)
+  (dbus-call-method
+   :session
+   "org.awesomewm.awful"
+   "/org/awesomewm/awful"
+   "org.awesomewm.awful.Remote"
+   "Eval"
+   lua-code)
+  )
+
+(defvar my-org-clock-timer)
+
+(defun awesome-start-clocking ()
+  (awesome-update-clocking-text)
+  (setq my-org-clock-timer (run-with-timer 0 15 'awesome-update-clocking-text))
+  )
+
+(defun awesome-stop-clocking ()
+  (awesome-clear-clocking-text)
+  (cancel-timer my-org-clock-timer)
+  (setq my-org-clock-timer nil)
+  )
+
+(defun awesome-update-clocking-text ()
+  (awesome-eval-lua-code
+   (format "myorgclock.text='%s'" (org-clock-get-clock-string)))
+  )
+
+(defun awesome-clear-clocking-text ()
+  (awesome-eval-lua-code "myorgclock.text=''")
+  )
+
+(add-hook 'org-clock-in-hook 'awesome-start-clocking)
+(add-hook 'org-clock-out-hook 'awesome-stop-clocking)
+(add-hook 'org-clock-cancel-hook 'awesome-stop-clocking)
 
 (provide 'my-org)
