@@ -85,7 +85,7 @@
 (setq diary-file "~/org/cal")
 
 (setq org-capture-templates
-      '(("t" "TODO" entry (file (concat org-directory "gtd.org")) "* TODO %?\n%U" :empty-lines 0)
+      `(("t" "TODO" entry (file ,(concat "~/org/" "gtd.org")) "* TODO %?\n%U" :empty-lines 0)
         ))
 
 (defun gtd ()
