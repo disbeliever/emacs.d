@@ -24,7 +24,10 @@
                           ))
  '(org-special-ctrl-a/e t)
  ;'(org-file-apps (("\\.fb2\\.zip\\'" . "fbreader %s")))
- '(org-file-apps (append '(("\\.fb2\\.zip\\'" . "fbreader %s")) org-file-apps))
+ '(org-file-apps (append '(
+                           ("\\.fb2\\.zip\\'" . "fbreader %s")
+                           ("\\.djvu::\\([0-9]+\\)\\'" . "evince  '%s' -p %1")
+                           ) org-file-apps))
  '(org-annotate-file-storage-file (concat org-directory "annotated.org"))
  '(org-agenda-custom-commands
    (quote (("W" "Weekly Review"
