@@ -166,8 +166,8 @@
 (defvar my-org-clock-timer)
 
 (defun awesome-start-clocking ()
-  (awesome-update-clocking-text)
   (setq my-org-clock-timer (run-with-timer 0 15 'awesome-update-clocking-text))
+  (awesome-update-clocking-text)
   )
 
 (defun awesome-stop-clocking ()
