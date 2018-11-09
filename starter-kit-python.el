@@ -53,7 +53,6 @@
   (compile (concat "python " (buffer-name))))
 
 (defun my-python-hook ()
-  (turn-on-paredit)
   (local-set-key (kbd "C-c C-c") 'python-compile)
   (local-set-key [f8] 'pep8))
 (add-hook 'python-mode-hook 'my-python-hook)
@@ -69,6 +68,13 @@
 (setq pylookup-program "~/.emacs.d/custom-packages/pylookup/pylookup.py")
 (setq pylookup-db-file "~/.cache/pylookup.db")
 (global-set-key [(control shift menu)] 'pylookup-lookup)
+
+(add-hook 'python-mode-hook (lambda ()
+  ;; remove python-mode's ffap things that slow down find-file
+  (setq ffap-alist (remove '(python-mode . py-ffap-module-path) ffap-alist))
+  (setq ffap-alist (remove '(python-mode . py-module-path) ffap-alist))
+  (setq ffap-alist (remove '(inferior-python-mode . py-ffap-module-path) ffap-alist))
+))
 
 (provide 'starter-kit-python)
 ;; starter-kit-python.el ends here
