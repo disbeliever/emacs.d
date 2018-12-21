@@ -88,6 +88,13 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
+(setq ispell-program-name "hunspell")
+(setq ispell-dictionary "en_GB,ru_RU")
+;; ispell-set-spellchecker-params has to be called
+;; before ispell-hunspell-add-multi-dic will work
+(ispell-set-spellchecker-params)
+(ispell-hunspell-add-multi-dic "en_GB,ru_RU")
+
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
 
