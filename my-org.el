@@ -7,6 +7,7 @@
 (setq org-default-priority 68)
 (setq org-log-done 'time)
 (setq org-directory "~/org/")
+(setq org-ellipsis "⤵⤵⤵")
 (custom-set-variables
  '(calendar-week-start-day 1)
  '(holiday-general-holidays nil)
