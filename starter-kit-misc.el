@@ -88,6 +88,7 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
+(require 'ispell)
 (setq ispell-program-name "hunspell")
 (setq ispell-dictionary "en_GB,ru_RU")
 ;; ispell-set-spellchecker-params has to be called
