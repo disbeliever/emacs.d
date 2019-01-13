@@ -52,6 +52,7 @@
 (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
 (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-r") 'er-sudo-edit)
 
 ;; Window switching. (C-x o goes to the next window)
 (windmove-default-keybindings) ;; Shift+direction
