@@ -7,6 +7,7 @@
 (defvar starter-kit-packages (list
                               'color-theme
                               'find-file-in-project
+                              'helpful
                               'idle-highlight
                               'inf-ruby
                               'ledger-mode

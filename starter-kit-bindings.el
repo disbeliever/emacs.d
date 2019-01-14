@@ -77,6 +77,11 @@
 ;; Help should search more than just commands
 (global-set-key (kbd "C-h a") 'apropos)
 
+;; Use helpful
+(global-set-key (kbd "C-h f") 'helpful-callable)
+(global-set-key (kbd "C-h v") 'helpful-variable)
+(global-set-key (kbd "C-h k") 'helpful-key)
+
 ;; Should be able to eval-and-replace anywhere.
 (global-set-key (kbd "C-c e") 'eval-and-replace)
 
