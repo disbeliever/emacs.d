@@ -135,6 +135,12 @@
     (add-to-list 'grep-find-ignored-files "target")
     (add-to-list 'grep-find-ignored-files "*.class")))
 
+;; locate
+(defun disbeliever/locate-make-command-line (search-string)
+  "Make an insensitive locate command line"
+  (list locate-command "-i" search-string))
+(setq locate-make-command-line 'disbeliever/locate-make-command-line)
+
 ;; Default to unified diffs
 (setq diff-switches "-u -w"
       magit-diff-options "-w")

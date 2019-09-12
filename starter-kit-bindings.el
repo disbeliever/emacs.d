@@ -144,6 +144,7 @@
 (global-set-key [M-s-down] 'windmove-down)      ; move to downer window
 (define-key global-map "\C-cc" 'org-capture)
 (global-set-key (kbd "ESC M-l") 'org-annotate-file)
+(global-set-key (kbd "C-S-l") 'locate)
 
 ;; Compose Key
 (define-key key-translation-map [Multi_key] ; See `iso-transl.el'.
