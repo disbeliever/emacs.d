@@ -6,6 +6,7 @@
 
 (defvar starter-kit-packages (list
                               'color-theme
+                              'doom-themes
                               'find-file-in-project
                               'helpful
                               'idle-highlight
@@ -19,7 +20,6 @@
                               'yaml-mode
                               'yasnippet
                               'web-mode
-                              'zenburn
                               )
   "Libraries that should be installed by default.")
 

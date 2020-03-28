@@ -8,6 +8,12 @@
 (setq org-log-done 'time)
 (setq org-directory "~/org/")
 (setq org-ellipsis "⤵⤵⤵")
+(setq org-todo-keyword-faces (quote(
+                                     ("TODO" . "#e74c3c")
+                                     ("TO_READ" . "#e74c3c")
+                                     ("READING" . "SkyBlue1")
+                                     ("FAILED" . "orange")
+                                     ("SOMEDAY" . "plum"))))
 (custom-set-variables
  '(calendar-week-start-day 1)
  '(holiday-general-holidays nil)
@@ -50,10 +56,6 @@
  '(org-default-notes-file (concat org-directory "unsrt.org"))
  '(org-stuck-projects (quote ("+@project/-DONE-CANCELLED" ("TODO" "NEXT" "TO_READ" "READING") nil "")))
  '(org-tag-faces (quote (("@project" . "burlywood1"))))
- '(org-todo-keyword-faces (quote (
-                                  ("READING" . "SkyBlue1")
-                                  ("FAILED" . "orange")
-                                  ("SOMEDAY" . "plum"))))
  '(org-export-latex-default-packages-alist (quote (
                                                    ("AUTO" "inputenc" t)
                                                    ("T1" "fontenc" t)

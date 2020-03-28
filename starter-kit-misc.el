@@ -15,8 +15,8 @@
 (prefer-coding-system 'utf-8)
 (ansi-color-for-comint-mode-on)
 
-(require 'zenburn)
-(zenburn)
+(setq doom-themes-enable-bold t)
+(load-theme 'doom-gruvbox t)
 
 (setq visible-bell nil
       fringe-mode (cons 4 0)
