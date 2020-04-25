@@ -45,7 +45,7 @@
       (define-key python-mode-map "[" 'electric-pair)
       (define-key python-mode-map "{" 'electric-pair)))
 
-(autoload 'python-pep8 "python-pep8")
+(require 'flycheck-pycodestyle)
 
 (defun python-compile ()
   ;; Use compile to run python programs
@@ -54,7 +54,7 @@
 
 (defun my-python-hook ()
   (local-set-key (kbd "C-c C-c") 'python-compile)
-  (local-set-key [f8] 'pep8))
+  )
 (add-hook 'python-mode-hook 'my-python-hook)
 
 ;;; Auto completion
