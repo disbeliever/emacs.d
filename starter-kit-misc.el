@@ -74,7 +74,10 @@
 
 ;; Use ivy-mode if possible, otherwise use ido-mode
 (cond
- ((fboundp 'ivy-mode) (ivy-mode t))
+ ((fboundp 'ivy-mode)
+  (ivy-mode t)
+  (setq ivy-use-selectable-prompt t)
+  )
  ((> emacs-major-version 21)
   (ido-mode t)
   (setq ido-enable-prefix nil
