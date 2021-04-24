@@ -8,7 +8,9 @@
                               'color-theme
                               'doom-themes
                               'find-file-in-project
+                              'flycheck
                               'helpful
+                              'hydra
                               'idle-highlight
                               'inf-ruby
                               'ledger-mode
@@ -16,6 +18,7 @@
                               'magit
                               'python-mode
                               'ruby-mode
+                              'simple-modeline
                               'swiper
                               'yaml-mode
                               'yasnippet
