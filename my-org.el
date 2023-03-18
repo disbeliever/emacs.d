@@ -2,6 +2,8 @@
 ;(add-to-list 'org-modules 'org-habits)
 (require 'org)
 (require 'dbus)
+(setq org-replace-disputed-keys t)
+(setq org-adapt-indentation t)
 (setq org-clock-mode-line-total 'current)
 (setq org-clock-into-drawer nil)
 (setq org-default-priority 68)
@@ -14,14 +16,29 @@
                                      ("READING" . "SkyBlue1")
                                      ("FAILED" . "orange")
                                      ("SOMEDAY" . "plum"))))
+; diary
+(setq calendar-week-start-day 1
+      calendar-day-name-array ["Воскресенье" "Понедельник" "Вторник"
+                               "Среда" "Четверг" "Пятница" "Суббота"]
+      calendar-month-name-array ["Январь" "Февраль" "Март" "Апрель" "Май" 
+                                 "Июнь" "Июль" "Август" "Сентябрь"
+                                 "Октябрь" "Ноябрь" "Декабрь"])
+(setq diary-file "~/org/cal")
+
+; holidays
+(setq
+ holiday-general-holidays nil
+ holiday-islamic-holidays nil
+ holiday-hebrew-holidays nil
+ holiday-bahai-holidays nil
+ holiday-oriental-holidays nil
+ oriental-holidays nil)
+
+; org-roam
+(setq org-roam-directory "~/org/roam")
+(setq org-roam-v2-ack t)
+
 (custom-set-variables
- '(calendar-week-start-day 1)
- '(holiday-general-holidays nil)
- '(holiday-islamic-holidays nil)
- '(holiday-hebrew-holidays nil)
- '(holiday-bahai-holidays nil)
- '(holiday-oriental-holidays nil)
- '(oriental-holidays nil)    ; get rid of Oriental holidays
  '(org-deadline-warning-days 14)
  '(org-archive-location "~/org/_archive.org::")
  '(org-agenda-include-diary t)
@@ -30,7 +47,6 @@
  '(org-agenda-files (list (concat org-directory "gtd.org")
                           ))
  '(org-special-ctrl-a/e t)
- ;'(org-file-apps (("\\.fb2\\.zip\\'" . "fbreader %s")))
  '(org-file-apps (append '(
                            ("\\.fb2\\.zip\\'" . "fbreader %s")
                            ("\\.djvu::\\([0-9]+\\)\\'" . "evince  '%s' -p %1")
@@ -80,15 +96,6 @@
                                                    ("" "amssymb" nil)
                                                    ("intlimits" "amsmath" nil)
                                                    ("" "amsfonts" nil)))))
-
-; diary
-(setq calendar-week-start-day 1
-      calendar-day-name-array ["Воскресенье" "Понедельник" "Вторник"
-                               "Среда" "Четверг" "Пятница" "Суббота"]
-      calendar-month-name-array ["Январь" "Февраль" "Март" "Апрель" "Май" 
-                                 "Июнь" "Июль" "Август" "Сентябрь"
-                                 "Октябрь" "Ноябрь" "Декабрь"])
-(setq diary-file "~/org/cal")
 
 (setq org-capture-templates
       `(("t" "TODO" entry (file ,(concat "~/org/" "gtd.org")) "* TODO %?\n%U" :empty-lines 0)
