@@ -191,5 +191,13 @@
             (unless (string-match "question" oddmuse-post)
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
+;; Colorize compilation buffer
+;; https://stackoverflow.com/a/13408008/1825784
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (ansi-color-apply-on-region compilation-filter-start (point))
+  )
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here
