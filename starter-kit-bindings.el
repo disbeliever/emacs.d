@@ -127,8 +127,8 @@
 
 ;; global keybindings
 (global-set-key (kbd "C-M-s") 'swiper)
-(global-set-key [C-delete] 'geosoft-kill-buffer) 
-(global-set-key [C-kp-delete] 'geosoft-kill-buffer) 
+(global-set-key [C-delete] 'geosoft-kill-buffer)
+(global-set-key [C-kp-delete] 'geosoft-kill-buffer)
 (global-set-key (kbd "C-x C-u") 'uim-mode)
 (global-set-key [(control meta ?r)] 'remember)
 (global-set-key [f8] 'compile)

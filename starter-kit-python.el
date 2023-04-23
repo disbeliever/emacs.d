@@ -48,7 +48,7 @@
 (require 'flycheck-pycodestyle)
 
 (defun python-compile ()
-  ;; Use compile to run python programs
+  "Use compile to run python programs."
   (interactive)
   (compile (concat "python " (buffer-name))))
 
@@ -77,4 +77,4 @@
 ))
 
 (provide 'starter-kit-python)
-;; starter-kit-python.el ends here
+;;; starter-kit-python.el ends here

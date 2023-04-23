@@ -1,3 +1,6 @@
+;;; starter-kit-hydras.el --- hydras
+
+;;; Code:
 (defhydra help/hydra/timestamp (:color blue :hint nil)
   "
 Timestamps: (_q_uit)
