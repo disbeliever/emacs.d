@@ -54,13 +54,18 @@
 
 (defun my-python-hook ()
   (local-set-key (kbd "C-c C-c") 'python-compile)
+  (local-set-key (kbd "<C-f8>") 'pytest-all)
   )
 (add-hook 'python-mode-hook 'my-python-hook)
 
 ;;; Auto completion
-(add-hook 'python-mode-hook 'jedi:setup)
+;;(add-hook 'python-mode-hook 'jedi:setup)
+(elpy-enable)
+(setq elpy-rpc-backend "jedi")
 (setq jedi:complete-on-dot t)
 (setq jedi:environment-root "jedi-python3")
+(setq jedi:server-args '("--log-traceback"))
+;;(setq jedi:server-args nil)
 
 ;;; pylookup
 (add-to-list 'load-path "~/.emacs.d/custom-packages/pylookup/")
@@ -75,6 +80,14 @@
   (setq ffap-alist (remove '(python-mode . py-module-path) ffap-alist))
   (setq ffap-alist (remove '(inferior-python-mode . py-ffap-module-path) ffap-alist))
 ))
+
+;;; Use flycheck with elpy
+;; (when (load "flycheck" t t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; With elpy, disable vertical black bars
+(add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
 
 (provide 'starter-kit-python)
 ;;; starter-kit-python.el ends here
