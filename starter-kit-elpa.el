@@ -5,6 +5,7 @@
 (require 'cl)
 
 (defvar starter-kit-packages (list
+                              'ace-window
                               'color-theme
                               'doom-themes
                               'find-file-in-project
