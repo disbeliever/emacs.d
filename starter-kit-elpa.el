@@ -2,7 +2,6 @@
 ;;
 ;; Part of the Emacs Starter Kit
 
-(require 'cl)
 
 (defvar starter-kit-packages (list
                               'ace-window
@@ -44,8 +43,8 @@ just have to assume it's online."
   ;; TODO how could this work on Windows?
   (if (and (functionp 'network-interface-list)
            (network-interface-list))
-      (some (lambda (iface) (unless (equal "lo" (car iface))
-                         (member 'up (first (last (network-interface-info
+      (cl-some (lambda (iface) (unless (equal "lo" (car iface))
+                         (member 'up (cl-first (last (network-interface-info
                                                    (car iface)))))))
             (network-interface-list))
     t))
