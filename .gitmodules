@@ -1,3 +1,0 @@
-[submodule "custom-packages/pylookup"]
-	path = custom-packages/pylookup
-	url = https://github.com/tsgates/pylookup.git

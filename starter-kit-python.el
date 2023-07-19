@@ -52,12 +52,6 @@
   (interactive)
   (compile (concat "python " (buffer-name))))
 
-(defun my-python-hook ()
-  (local-set-key (kbd "C-c C-c") 'python-compile)
-  (local-set-key (kbd "<C-f8>") 'pytest-all)
-  )
-(add-hook 'python-mode-hook 'my-python-hook)
-
 ;;; Auto completion
 ;;(add-hook 'python-mode-hook 'jedi:setup)
 (elpy-enable)
@@ -66,13 +60,6 @@
 (setq jedi:environment-root "jedi-python3")
 (setq jedi:server-args '("--log-traceback"))
 ;;(setq jedi:server-args nil)
-
-;;; pylookup
-(add-to-list 'load-path "~/.emacs.d/custom-packages/pylookup/")
-(eval-when-compile (require 'pylookup))
-(setq pylookup-program "~/.emacs.d/custom-packages/pylookup/pylookup.py")
-(setq pylookup-db-file "~/.cache/pylookup.db")
-(global-set-key [(control shift menu)] 'pylookup-lookup)
 
 (add-hook 'python-mode-hook (lambda ()
   ;; remove python-mode's ffap things that slow down find-file
@@ -88,6 +75,13 @@
 
 ;; With elpy, disable vertical black bars
 (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
+
+(defun my-python-hook ()
+  (local-set-key (kbd "C-c C-c") 'python-compile)
+  (local-set-key (kbd "<C-f8>") 'pytest-all)
+  (local-set-key (kbd "<S-f12>") 'elpy-doc)
+  )
+(add-hook 'python-mode-hook 'my-python-hook)
 
 (provide 'starter-kit-python)
 ;;; starter-kit-python.el ends here
