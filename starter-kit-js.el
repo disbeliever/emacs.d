@@ -3,11 +3,12 @@
 ;; Part of the Emacs Starter Kit
 
 (autoload 'espresso-mode "espresso" "Start espresso-mode" t)
-(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 (add-hook 'espresso-mode-hook 'moz-minor-mode)
 (add-hook 'espresso-mode-hook 'esk-paredit-nonlisp)
 (add-hook 'espresso-mode-hook 'run-coding-hook)
+(add-hook 'js-mode-hook 'lsp)
 (setq espresso-indent-level 2)
 
 ;; If you prefer js2-mode, use this instead:
