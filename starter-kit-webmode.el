@@ -39,7 +39,7 @@
 (add-hook 'web-mode-hook 'my-web-mode-hook)
 
 (add-hook 'web-mode-before-auto-complete-hooks
-          '(lambda ()
+          #'(lambda ()
              (let ((web-mode-cur-language
                     (web-mode-language-at-pos)))
                (if (string= web-mode-cur-language "php")
