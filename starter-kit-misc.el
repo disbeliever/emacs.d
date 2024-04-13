@@ -200,5 +200,8 @@
   )
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+;; Overwrite selected text on yank
+(delete-selection-mode 1)
+
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here
