@@ -115,7 +115,7 @@
   (format-time-string
    "%u"
    (seconds-to-time
-    (org-float-time
+    (float-time
      (apply 'encode-time (org-parse-time-string time-string))))))
 
 
@@ -123,7 +123,7 @@
   (format-time-string
    "%Y-%m-%d"
    (seconds-to-time
-    (+ (org-float-time (apply 'encode-time
+    (+ (float-time (apply 'encode-time
      (org-parse-time-string time-string)))
        seconds))))
 
@@ -132,13 +132,13 @@
   (save-restriction
     (org-narrow-to-subtree)
     (let* ((next-day-secs (* 3600 25))
-           (ts (format-time-string "%Y-%m-%d" (seconds-to-time (- (org-float-time (current-time)) (* check-n-days 3600 24)))))
+           (ts (format-time-string "%Y-%m-%d" (seconds-to-time (- (float-time (current-time)) (* check-n-days 3600 24)))))
            (te (org-time-delta-seconds ts next-day-secs))
            (res '())
            (dates '()))
-      (while (< (org-float-time
+      (while (< (float-time
                  (apply 'encode-time (org-parse-time-string ts)))
-                (org-float-time (current-time)))
+                (float-time (current-time)))
         (org-clock-sum ts te) ; slow
         (setq res (cons (/ org-clock-file-total-minutes 60.0) res)
               dates (cons (if (equal (get-day-time-string ts) "1")
@@ -154,8 +154,8 @@
   (let* ((x (org-list-clocks-current-item 40))
         (dates (reverse (car x)))
         (res (reverse (cadr x)))
-        (active-days (length (remove-if (lambda (x) (= x 0)) res)))
-        (sum-hours (reduce (lambda (a b) (+ a b)) res)))
+        (active-days (length (cl-remove-if (lambda (x) (= x 0)) res)))
+        (sum-hours (cl-reduce (lambda (a b) (+ a b)) res)))
     (browse-url (format "https://quickchart.io/chart?chxl=1:|%s&chxr=0,0,8|1,0,105&chxt=y,x&chbh=15&chs=1000x300&cht=bvg&chco=80C65A&chds=0,8&chd=t:%s&chg=0,12.5&chma=|5,10&chtt=Clocked+Activity+(%d+days,+%d+hours)&chm=h,FF0000,0,%f,1"
                       (mapconcat (lambda (x) x) dates "|")
                       (mapconcat (lambda (x) (format "%s" x)) res  ",")
