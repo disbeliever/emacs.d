@@ -156,7 +156,7 @@
         (res (reverse (cadr x)))
         (active-days (length (remove-if (lambda (x) (= x 0)) res)))
         (sum-hours (reduce (lambda (a b) (+ a b)) res)))
-    (browse-url (format "http://chart.apis.google.com/chart?chxl=1:|%s&chxr=0,0,8|1,0,105&chxt=y,x&chbh=15&chs=1000x300&cht=bvg&chco=80C65A&chds=0,8&chd=t:%s&chg=0,12.5&chma=|5,10&chtt=Clocked+Activity+(%d+days,+%d+hours)&chm=h,FF0000,0,%f,1"
+    (browse-url (format "https://quickchart.io/chart?chxl=1:|%s&chxr=0,0,8|1,0,105&chxt=y,x&chbh=15&chs=1000x300&cht=bvg&chco=80C65A&chds=0,8&chd=t:%s&chg=0,12.5&chma=|5,10&chtt=Clocked+Activity+(%d+days,+%d+hours)&chm=h,FF0000,0,%f,1"
                       (mapconcat (lambda (x) x) dates "|")
                       (mapconcat (lambda (x) (format "%s" x)) res  ",")
                       active-days
