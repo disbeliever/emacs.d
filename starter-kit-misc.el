@@ -15,8 +15,13 @@
 (prefer-coding-system 'utf-8)
 (ansi-color-for-comint-mode-on)
 
-(setq doom-themes-enable-bold t)
-(load-theme 'doom-gruvbox t)
+(use-package doom-themes
+ :ensure t
+ :config
+ ;; Global settings (defaults)
+ (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
+       doom-themes-enable-italic nil) ; if nil, italics is universally disabled
+ (load-theme 'doom-gruvbox t))
 
 (setq visible-bell nil
       fringe-mode (cons 4 0)
