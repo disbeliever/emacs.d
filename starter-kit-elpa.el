@@ -11,7 +11,7 @@
                               'flycheck
                               'helpful
                               'hydra
-                              'idle-highlight
+                              'idle-highlight-mode
                               'inf-ruby
                               'ledger-mode
                               'lua-mode

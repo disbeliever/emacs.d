@@ -114,8 +114,14 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'coding-hook 'turn-on-save-place-mode)
 (add-hook 'coding-hook 'pretty-lambdas)
 (add-hook 'coding-hook 'add-watchwords)
-(add-hook 'coding-hook 'idle-highlight)
-  
+;(add-hook 'coding-hook 'idle-highlight-mode)
+;(add-hook 'coding-hook 'fixme-mode)
+
+(use-package idle-highlight-mode
+  :config (setq idle-highlight-idle-time 0.2)
+
+  :hook ((coding) . idle-highlight-mode))
+
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
   (run-hooks 'coding-hook))

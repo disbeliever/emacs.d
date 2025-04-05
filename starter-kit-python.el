@@ -11,7 +11,6 @@
      (global-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
 
 (global-set-key (kbd "C-h p") 'python-shell)
-(add-hook 'python-mode-hook 'idle-highlight)
 
 ;;; Flymake
 
@@ -82,6 +81,7 @@
   (local-set-key (kbd "<S-f12>") 'elpy-doc)
   )
 (add-hook 'python-mode-hook 'my-python-hook)
+(add-hook 'python-mode-hook 'run-coding-hook)
 
 (provide 'starter-kit-python)
 ;;; starter-kit-python.el ends here
