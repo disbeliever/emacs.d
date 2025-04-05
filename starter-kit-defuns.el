@@ -177,7 +177,7 @@ Symbols matching the text at point are put first in the completion list."
         (generated-autoload-file autoload-file))
     (when (or force-regen
               (not (file-exists-p autoload-file))
-              (some (lambda (f) (file-newer-than-file-p f autoload-file))
+              (cl-some (lambda (f) (file-newer-than-file-p f autoload-file))
                     (directory-files autoload-dir t "\\.el$")))
       (message "Updating autoloads...")
       (let (emacs-lisp-mode-hook)
@@ -271,7 +271,7 @@ Symbols matching the text at point are put first in the completion list."
 
    (
     (and buffer-file-name
-     (s-equals-p (file-name-extension (buffer-file-name)) "hs"))
+     (string-equal (file-name-extension (buffer-file-name)) "hs"))
     (set (make-local-variable 'compile-command) (concat "ghc --make "
                            (buffer-file-name)
                            " -o "
